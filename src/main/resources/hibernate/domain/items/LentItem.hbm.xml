@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.frenchman.borrowings.domain.items">
+  <class name="LentItem">
+    <id name="id">
+      <generator class="native" />
+    </id>
+    <many-to-one name="lender" class="Person" fetch="select">
+      <column name="LENDER_ID"  />
+    </many-to-one>
+    <many-to-one name="borrower" class="Person" fetch="select">
+      <column name="BORROWER_ID" not-null="true" />
+    </many-to-one>
+    <many-to-one name="borrowing" class="Item">
+      <column name="BORROWING_ID" not-null="true" />
+    </many-to-one>
+    <property name="lentDate" />
+    <property name="returnDate" />
+  </class>
+</hibernate-mapping>
