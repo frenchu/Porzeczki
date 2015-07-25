@@ -7,15 +7,9 @@
     <id name="id">
       <generator class="native" />
     </id>
-    <many-to-one name="lender" class="Person" fetch="select">
-      <column name="LENDER_ID"  />
-    </many-to-one>
-    <many-to-one name="borrower" class="Person" fetch="select">
-      <column name="BORROWER_ID" not-null="true" />
-    </many-to-one>
-    <many-to-one name="borrowing" class="Item">
-      <column name="BORROWING_ID" not-null="true" />
-    </many-to-one>
+    <many-to-one name="lender" class="Person" not-null="true" fetch="select" />
+    <many-to-one name="borrower" class="Person" not-null="true" fetch="select" />
+    <many-to-one name="borrowing" class="Item" not-null="true" />
     <property name="lentDate" />
     <property name="returnDate" />
   </class>

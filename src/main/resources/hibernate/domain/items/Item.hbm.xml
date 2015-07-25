@@ -7,7 +7,7 @@
     <id name="id">
       <generator class="native" />
     </id>
-    <property name="name" />
+    <property name="name" not-null="true"/>
     <property name="description" />
     <many-to-one name="category" class="Category" />
   </class>

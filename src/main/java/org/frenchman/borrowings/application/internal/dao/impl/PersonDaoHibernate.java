@@ -26,8 +26,8 @@ public class PersonDaoHibernate implements PersonDao {
   @Override
   public Person getPersonBySurname(String surname) {
     return (Person) sessionFactory.getCurrentSession()
-        .createQuery("select Person where surname = ?")
-        .setString(0, surname)
+        .createQuery("from Person where surname = :surname")
+        .setString("surname", surname)
         .uniqueResult();
   }
 }

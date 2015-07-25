@@ -7,14 +7,14 @@
     <id name="id">
       <generator class="native" />
     </id>
-    <property name="name" />
-    <property name="surname" />
+    <property name="name" not-null="true" />
+    <property name="surname" not-null="true" />
     <property name="additionalInfo" />
     <joined-subclass name="User">
-      <key column="ID" />
-      <property name="login" />
-      <property name="password" />
-      <property name="email" />
+      <key />
+      <property name="login" not-null="true" />
+      <property name="password" not-null="true" />
+      <property name="email" not-null="true" />
     </joined-subclass>
   </class>
 </hibernate-mapping>

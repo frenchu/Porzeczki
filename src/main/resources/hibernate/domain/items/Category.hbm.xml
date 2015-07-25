@@ -7,7 +7,7 @@
     <id name="id">
       <generator class="native" />
     </id>
-    <many-to-one name="parentCategory" class="Category" />
+    <many-to-one name="parentCategory" class="Category" column="CATEGORY_ID"/>
     <property name="name" />
   </class>
 </hibernate-mapping>
