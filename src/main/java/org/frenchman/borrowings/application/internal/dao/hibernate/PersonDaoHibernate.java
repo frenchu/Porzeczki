@@ -1,4 +1,4 @@
-package org.frenchman.borrowings.application.internal.dao.impl;
+package org.frenchman.borrowings.application.internal.dao.hibernate;
 
 import javax.inject.Inject;
 

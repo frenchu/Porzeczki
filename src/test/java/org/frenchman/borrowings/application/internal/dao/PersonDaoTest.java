@@ -1,24 +1,22 @@
-package org.frenchman.borrowings.application.internal.dao.impl;
+package org.frenchman.borrowings.application.internal.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-import org.frenchman.borrowings.application.internal.dao.PersonDao;
 import org.frenchman.borrowings.domain.items.Person;
 import org.frenchman.borrowings.domain.items.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration("/spring/context/hibernate-application.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class PersonDaoHibernateTest {
+public abstract class PersonDaoTest {
 
   @Inject
-  PersonDao personDaoHibernate;
+  private PersonDao personDao;
   
   @Test
   @Transactional
@@ -29,10 +27,10 @@ public class PersonDaoHibernateTest {
     person.setSurname("Poczatek");
     
     // when
-    personDaoHibernate.save(person);
+    personDao.save(person);
     
     // then
-    Person queriedPerson = personDaoHibernate.getPersonBySurname(person.getSurname());
+    Person queriedPerson = personDao.getPersonBySurname(person.getSurname());
     assertNotNull(queriedPerson);
     assertEquals(queriedPerson.getSurname(), person.getSurname());
     assertEquals(queriedPerson.getName(), person.getName());
@@ -50,10 +48,10 @@ public class PersonDaoHibernateTest {
     user.setEmail("frenchu@o2.pl");
     
     // when
-    personDaoHibernate.save(user);
+    personDao.save(user);
     
     // then
-    User queriedUser = (User) personDaoHibernate.getPersonBySurname(user.getSurname());
+    User queriedUser = (User) personDao.getPersonBySurname(user.getSurname());
     assertNotNull(queriedUser);
     assertEquals(queriedUser.getSurname(), user.getSurname());
     assertEquals(queriedUser.getName(), user.getName());
