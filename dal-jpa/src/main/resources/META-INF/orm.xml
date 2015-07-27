@@ -9,21 +9,27 @@
   <package>org.frenchman.borrowings.domain.items</package>
   <entity name="Category" class="Category" access="FIELD">
     <attributes>
-      <id name="id" />
+      <id name="id">
+        <generated-value />
+      </id>
       <basic name="name" optional="false" />
       <many-to-one name="parentCategory" target-entity="Category" />
     </attributes>
   </entity>
   <entity name="Item" class="Item" access="FIELD">
     <attributes>
-      <id name="id" />
+      <id name="id">
+        <generated-value />
+      </id>
       <basic name="name" optional="false" />
       <many-to-one name="category" target-entity="Category" />
     </attributes>
   </entity>
   <entity name="LentItem" class="LentItem" access="FIELD">
     <attributes>
-      <id name="id" />
+      <id name="id">
+        <generated-value />
+      </id>
       <many-to-one name="lender" target-entity="Person" optional="false" />
       <many-to-one name="borrower" target-entity="Person" optional="false" />
       <many-to-one name="borrowing" target-entity="Item" optional="false" />
@@ -32,7 +38,9 @@
   <entity name="Person" class="Person" access="FIELD">
     <inheritance strategy="JOINED" />
     <attributes>
-      <id name="id" />
+      <id name="id">
+        <generated-value />
+      </id>
       <basic name="name" optional="false" />
       <basic name="surname" optional="false" />
     </attributes>
