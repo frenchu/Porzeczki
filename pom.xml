@@ -4,6 +4,8 @@
   <groupId>org.frenchman</groupId>
   <artifactId>borrowings</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
   <name>Porzeczki</name>
   <description>Porzeczki are items we lend to people and tend to forget when and to whom.</description>
   
@@ -29,11 +31,6 @@
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
     </dependency>
@@ -43,29 +40,9 @@
       <version>${spring.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>${hibernate.version}</version>
-    </dependency>
-    <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
       <version>1</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-dbcp</groupId>
-      <artifactId>commons-dbcp</artifactId>
-      <version>1.4</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <version>2.3.3</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -75,4 +52,10 @@
     </dependency>
   </dependencies>
   
+  <modules>
+    <module>domain-model</module>
+    <module>dal-common</module>
+    <module>dal-jpa</module>
+    <module>dal-hibernate</module>
+  </modules>
 </project>
