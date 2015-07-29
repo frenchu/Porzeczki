@@ -25,3 +25,9 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
+
+# Log files
+*.log
+
+# Secure files
+database-connection.properties

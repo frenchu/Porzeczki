@@ -30,4 +30,8 @@ public class PersonDaoJpa implements PersonDao {
     query.setParameter("surname", surname);
     return (Person) query.getSingleResult();
   }
+  
+  public static void main(String[] args) {
+    
+  }
 }

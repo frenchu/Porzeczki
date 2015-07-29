@@ -8,15 +8,23 @@ import javax.transaction.Transactional;
 
 import org.frenchman.borrowings.domain.items.Person;
 import org.frenchman.borrowings.domain.items.User;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
 public abstract class PersonDaoTest {
 
   @Inject
   private PersonDao personDao;
+  
+  @BeforeClass
+  public static void initSystemProperties() {
+    System.setProperty("org.jboss.logging.provider", "slf4j");
+  }
   
   @Test
   @Transactional

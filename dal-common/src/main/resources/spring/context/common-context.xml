@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+  <!-- Exception translation bean post processor -->
+  <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+  
+  <tx:annotation-driven/>
+
+  <beans profile="test">
+    <util:properties id="hibernateProperties" location="config/hibernate-common.properties,config/hibernate-test.properties" />
+    <jdbc:embedded-database id="dataSource" />
+  </beans>
+
+  <beans profile="prod">
+    <util:properties id="dbConnectionProperties" location="config/database-connection.properties" />
+    <util:properties id="hibernateProperties" location="config/hibernate-common.properties,config/hibernate-prod.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close">
+      <property name="driverClassName" value="#{dbConnectionProperties['driverClassName']}" />
+      <property name="url" value="#{dbConnectionProperties['url']}" />
+      <property name="username" value="#{dbConnectionProperties['username']}" />
+      <property name="password" value="#{dbConnectionProperties['password']}" />
+    </bean>
+  </beans>
+  
+</beans>
