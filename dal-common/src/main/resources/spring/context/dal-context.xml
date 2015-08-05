@@ -30,7 +30,7 @@
   <beans profile="prod">
     <util:properties id="dbConnectionProperties" location="config/database-connection.properties" />
     <util:properties id="hibernateProperties" location="config/hibernate-common.properties,config/hibernate-prod.properties" />
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
         destroy-method="close">
       <property name="driverClassName" value="#{dbConnectionProperties['driverClassName']}" />
       <property name="url" value="#{dbConnectionProperties['url']}" />

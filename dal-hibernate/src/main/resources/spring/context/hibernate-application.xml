@@ -14,7 +14,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-  <import resource="classpath:/spring/context/common-context.xml" />
+  <import resource="classpath:/spring/context/dal-context.xml" />
 
   <context:component-scan base-package="org.frenchman.borrowings.application.internal.dao.hibernate" />
   
