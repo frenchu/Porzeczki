@@ -1,5 +1,7 @@
 package org.frenchman.borrowings.application.internal.dao.hibernate;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.frenchman.borrowings.application.internal.dao.PersonDao;
@@ -17,6 +19,11 @@ public class PersonDaoHibernate implements PersonDao {
   public void save(Person person) {
     sessionFactory.getCurrentSession().saveOrUpdate(person);
   }
+  
+  @Override
+  public void remove(Person person) {
+    sessionFactory.getCurrentSession().delete(person);
+  }
 
   @Override
   public Person getPersonById(Long id) {
@@ -29,5 +36,13 @@ public class PersonDaoHibernate implements PersonDao {
         .createQuery("from Person where surname = :surname")
         .setString("surname", surname)
         .uniqueResult();
+  }
+  
+  @Override
+  @SuppressWarnings("unchecked")
+  public List<Person> getAllPersons() {
+    return sessionFactory.getCurrentSession()
+        .createQuery("from Person")
+        .list();
   }
 }

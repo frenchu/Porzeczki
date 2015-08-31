@@ -1,5 +1,7 @@
 package org.frenchman.borrowings.application.internal.dao.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,6 +20,11 @@ public class PersonDaoJpa implements PersonDao {
   public void save(Person person) {
     entityManager.persist(person);
   }
+  
+  @Override
+  public void remove(Person person) {
+    entityManager.remove(person);
+  }
 
   @Override
   public Person getPersonById(Long id) {
@@ -29,6 +36,13 @@ public class PersonDaoJpa implements PersonDao {
     Query query = entityManager.createQuery("from Person as p where p.surname = :surname");
     query.setParameter("surname", surname);
     return (Person) query.getSingleResult();
+  }
+  
+  @Override
+  @SuppressWarnings("unchecked")
+  public List<Person> getAllPersons() {
+    Query query = entityManager.createQuery("from Person as p");
+    return query.getResultList();
   }
   
   public static void main(String[] args) {

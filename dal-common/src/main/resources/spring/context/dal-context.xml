@@ -17,10 +17,10 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-  <!-- Exception translation bean post processor -->
-  <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-  
   <tx:annotation-driven/>
+
+  <!-- Exception translation bean post processor -->
+  <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />    
 
   <beans profile="test">
     <util:properties id="hibernateProperties" location="config/hibernate-common.properties,config/hibernate-test.properties" />

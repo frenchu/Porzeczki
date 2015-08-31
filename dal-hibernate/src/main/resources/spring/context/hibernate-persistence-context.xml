@@ -16,8 +16,6 @@
 
   <import resource="classpath:/spring/context/dal-context.xml" />
 
-  <context:component-scan base-package="org.frenchman.borrowings.application.internal.dao.hibernate" />
-  
   <bean id="sessionFactory"
       class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
     <property name="dataSource" ref="dataSource" />

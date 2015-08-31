@@ -3,6 +3,8 @@ package org.frenchman.borrowings.application.internal.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
@@ -19,7 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public abstract class PersonDaoTest {
 
   @Inject
-  private PersonDao personDao;
+  protected PersonDao personDao;
   
   @BeforeClass
   public static void initSystemProperties() {
@@ -28,7 +30,7 @@ public abstract class PersonDaoTest {
   
   @Test
   @Transactional
-  public void testGetPersonById() {
+  public void testGetPersonBySurname() {
     // given
     Person person = new Person();
     person.setName("Jacek");
@@ -46,7 +48,7 @@ public abstract class PersonDaoTest {
   
   @Test
   @Transactional
-  public void testGetUserById() {
+  public void testGetUserBySurname() {
     // given
     User user = new User();
     user.setName("Pawel");
@@ -68,4 +70,10 @@ public abstract class PersonDaoTest {
     assertEquals(queriedUser.getEmail(), user.getEmail());
   }
 
+  @Test
+  @Transactional
+  public void testGetAllPersons() {
+    List<Person> persons = personDao.getAllPersons();
+    assertNotNull(persons);
+  }
 }

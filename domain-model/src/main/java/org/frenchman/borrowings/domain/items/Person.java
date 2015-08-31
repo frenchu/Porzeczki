@@ -38,4 +38,12 @@ public class Person {
   public void setAdditionalInfo(String additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
+  
+  @Override
+  public String toString() {
+    return "[" + getSurname()
+      + ", " + getName()
+      + ", " + getAdditionalInfo()
+      + "]";
+  }
 }

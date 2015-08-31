@@ -14,6 +14,7 @@ hs_err_pid*
 # Eclipse project files
 .classpath
 .project
+.springBeans
 .settings/
 
 # Maven
